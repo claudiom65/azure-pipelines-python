@@ -132,7 +132,7 @@ jobs:
   - bash: echo $(PYPIRC_PATH)
   - bash: echo $(Pipeline.Workspace)
   - bash: echo $(PYPIRC_PATH)
-  - bash: ls /home/vsts/work/1/s/src/simple_package/dist
+  - bash: ls /home/vsts/work/1/dist
   - bash: pip list
     
   - task: PythonScript@0

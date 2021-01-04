@@ -100,7 +100,7 @@ jobs:
 
   # Only publish when the previous Jobs are successful and we're building the master branch
   # condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
-  condition: and(succeeded())
+  condition: succeeded()
 
   # Variables specific to the Publish job
   variables:

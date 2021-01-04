@@ -106,7 +106,7 @@ jobs:
   variables:
     artifactName: dist$(publishedVersion)
     pythonVersion: 3.7
-    projectName: AZURE-PIPELINES-PYTHON
+    projectName: Publish-Artifact-Sample
 
   # Steps are the specific tasks that execute code and do things
   steps:

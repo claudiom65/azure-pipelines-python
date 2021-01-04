@@ -106,6 +106,7 @@ jobs:
   variables:
     artifactName: dist$(publishedVersion)
     pythonVersion: 3.7
+    projectName: AZURE-PIPELINES-PYTHON
 
   # Steps are the specific tasks that execute code and do things
   steps:
@@ -132,7 +133,7 @@ jobs:
   - task: TwineAuthenticate@0
     displayName: Configure twine authentication
     inputs:
-      artifactFeeds: $(artifactFeed)
+      artifactFeeds: $(projectName)/$(artifactFeed)
 
   # Upload everything in the dist folder to the private Artifacts feed 
   - bash: twine upload -r $(artifactFeed) --verbose --config-file $(PYPIRC_PATH) $(Pipeline.Workspace)/$(artifactName)/*

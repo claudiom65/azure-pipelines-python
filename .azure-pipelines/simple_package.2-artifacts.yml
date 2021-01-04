@@ -128,6 +128,26 @@ jobs:
   - bash: python -m pip install wheel twine keyring artifacts-keyring
     displayName: Install twine
 
+
+  - bash: echo $(PYPIRC_PATH)
+  - bash: echo $(Pipeline.Workspace)
+  - bash: echo $(PYPIRC_PATH)
+  - bash: ls /home/vsts/work/1
+  - bash: ls /home/vsts/work/1/dist/*
+  - bash: pip list
+    
+  - task: PythonScript@0
+    inputs:
+          ScriptSource: inline
+          script: |
+              import sys
+              import os
+              file_path = os.getenv("PYPIRC_PATH")
+              with open(file_path,'r') as f:
+                 print(f.read())
+
+
+
   # Authenticate to Azure Artifacts
   # This sets the PYPIRC_PATH environment variable, which contains credentials for the feed
   - task: TwineAuthenticate@0

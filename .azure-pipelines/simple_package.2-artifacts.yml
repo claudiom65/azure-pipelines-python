@@ -124,7 +124,7 @@ jobs:
       versionSpec: $(pythonVersion)
 
   # Install tools needed for publishing
-  - bash: python -m pip install twine
+  - bash: python -m pip install wheel twine keyring artifacts-keyring
     displayName: Install twine
 
   # Authenticate to Azure Artifacts
@@ -135,5 +135,5 @@ jobs:
       artifactFeeds: $(artifactFeed)
 
   # Upload everything in the dist folder to the private Artifacts feed 
-  - bash: twine upload -r $(artifactFeed) --config-file $(PYPIRC_PATH) $(Pipeline.Workspace)/$(artifactName)/*
+  - bash: twine upload -r $(artifactFeed) --verbose --config-file $(PYPIRC_PATH) $(Pipeline.Workspace)/$(artifactName)/*
     displayName: Publish artifacts

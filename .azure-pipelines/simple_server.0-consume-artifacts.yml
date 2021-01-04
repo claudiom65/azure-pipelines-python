@@ -11,7 +11,7 @@ variables:
   app: simple_server
   srcDirectory: src/$(app)
   testsDirectory: tests/$(app)
-  artifactFeed: artifacts
+  artifactFeed: samplefeed
 
 # Trigger only when simple_server or its build has been modified
 trigger:

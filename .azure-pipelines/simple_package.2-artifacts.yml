@@ -129,6 +129,19 @@ jobs:
     displayName: Install twine
 
 
+
+  # Authenticate to Azure Artifacts
+  # This sets the PYPIRC_PATH environment variable, which contains credentials for the feed
+  - task: TwineAuthenticate@0
+    displayName: Configure twine authentication
+    inputs:
+      artifactFeeds: $(projectName)/$(artifactFeed)
+
+
+
+
+  ######## DEBUG tasks - begin
+  
   - bash: echo $(PYPIRC_PATH)
   - bash: echo $(Pipeline.Workspace)
   - bash: echo $(PYPIRC_PATH)
@@ -144,15 +157,8 @@ jobs:
               file_path = os.getenv("PYPIRC_PATH")
               with open(file_path,'r') as f:
                  print(f.read())
-
-
-
-  # Authenticate to Azure Artifacts
-  # This sets the PYPIRC_PATH environment variable, which contains credentials for the feed
-  - task: TwineAuthenticate@0
-    displayName: Configure twine authentication
-    inputs:
-      artifactFeeds: $(projectName)/$(artifactFeed)
+                
+   ######## DEBUG tasks - end
 
   # Upload everything in the dist folder to the private Artifacts feed 
   - bash: twine upload -r $(artifactFeed) --verbose --config-file $(PYPIRC_PATH) $(Pipeline.Workspace)/$(artifactName)/*

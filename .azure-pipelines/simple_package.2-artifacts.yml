@@ -132,10 +132,10 @@ jobs:
 
   # Authenticate to Azure Artifacts
   # This sets the PYPIRC_PATH environment variable, which contains credentials for the feed
-  - task: TwineAuthenticate@0
+  - task: TwineAuthenticate@1
     displayName: Configure twine authentication
     inputs:
-      artifactFeeds: $(projectName)/$(artifactFeed)
+      artifactFeed: $(projectName)/$(artifactFeed)
 
 
 

@@ -13,7 +13,7 @@ variables:
   srcDirectory: src/$(package)
   testsDirectory: tests/$(package)
   artifactFeed: samplefeed
-  publishedVersion: 3.7
+  publishedVersion: 3.6
 
 # Trigger only when simple_package or its build has been modified
 trigger:

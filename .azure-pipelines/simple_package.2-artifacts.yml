@@ -105,7 +105,7 @@ jobs:
   # Variables specific to the Publish job
   variables:
     artifactName: dist$(publishedVersion)
-    pythonVersion: 3.7
+    pythonVersion: 3.6
     projectName: Publish-Artifact-Sample
 
   # Steps are the specific tasks that execute code and do things
